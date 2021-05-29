@@ -1,0 +1,65 @@
+* {
+  font-family: 'IBM Plex Sans', sans-serif;
+  color: #393e46;
+  margin: 0;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 40px;
+  text-align: center;
+  color: #72147e;
+}
+
+h2 {
+  padding-top: 10px;
+  padding-bottom: 20px;
+  text-align: center;
+  color: #ff5200;
+}
+
+p {
+  text-align: center;
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+}
+
+label {
+  display: block;
+}
+
+input {
+  display: block;
+  padding-top: 5px;
+}
+
+th {
+  text-align: center;
+}
+.header {
+  background-color: #eeeeee;
+  height: 150px;
+  padding-top: 20px;
+}
+
+.content-info {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.left {
+  width: 35%;
+  float: left;
+  margin-right: 100px;
+}
+
+.right {
+  margin-left: 50%;
+}
+
+.field {
+  margin-top: 10px;
+}
