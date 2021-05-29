@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css" />
+  <title>Metodos Númericos</title>
+</head>
+<body>
+    <body>
+    <div class="header">
+      <h1>Metodos Númericos</h1>
+      <p class="azul">Calculadora de ecuaciones no lineales</p>
+    </div>
+  <div class="content">
+      <div>
+        <h2>DATOS</h2>
+        <div class="content-info">
+          <form>
+            <div class="field">
+              <label>Ecuación:</label>
+              <input class ="left" id="equation" type="text"/>
+              <label class="right">F(x)=</label>
+              <input class="right" id="ecuacionResult" type="text" size="35" disabled>
+              <br><input class="left"type="button" id="add" value="Agregar">
+              <br>
+              <br><label>% De error:</label>
+              <input id="function" type="text" size="35" />
+              <label>Método a utilizar:</label>
+              <select id="method" type="Number">
+                <option value="1">Método de bisección</option>
+                <option value="2">Método de la falsa posición</option>
+                <option value="3">Método de Newton</option>
+                <option value="4">Método de la secante</option>
+                <option value="5">Método de sustitución sucesiva</option>
+                <option value="6">Método de Bairstow</option>
+              </select>
+              <label>X<sub>i</sub>:</label>
+              <input id="xi" type="number" size="35" />
+              <label>X<sub>f</sub>:</label>
+              <input id="xf" type="number" size="35" />
+            </div>
+            <div class="field">
+              <input id="calcular" type="button" value="Calcular" />
+            </div>
+          </form>
+        </div>
+            <div>
+      <h2>Ingredientes</h2>
+      <div class="content-info">
+        <table id="table" class="table">
+          <tr>
+            <th>Xm</th>
+            <th>% de errores</th>
+          </tr>
+        </table>
+      </div>
+      </div>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="main.js" type="module"></script>
+</body>
+</html>
