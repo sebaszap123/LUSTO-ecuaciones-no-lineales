@@ -1,39 +1,43 @@
 import ReadForm from "./ReadForm.js";
-import EquationForm from "./equationForm.js";
 import Newton from "./newton.js";
-import Registry from "./registry.js";
+import Resolved from "./resolved.js";
 class App {
   constructor() {
     this._calcular = document.querySelector("#calcular");
     this._calcular.addEventListener("click", this.readForm);
-    this._registry = new Registry()
+    this._addResolve = new Resolved() // Hace visibles los resultados en el html
   }
   readForm = () => {
     // de esto puedo usar metodos para obtener los datos
     var callMethod
     let form = ReadForm.read();
-    if (form) {
-      let equationForm = new EquationForm(form.getEquation())
-      callMethod = this._callBackMethods(form, equationForm, this._registry)
-    } else {
-      Swal.fire("Error", "Faltan valores por agregar", "error");
+    if (!form) {
+      Swal.fire({
+        icon: 'error',
+        title:'ERROR',
+        text:'Todos los valores son obligatorios'
+      });
+      return;
     }
+    callMethod = this._callBackMethods(form, this._addResolve);
+      
+    
     console.log(callMethod)
     if (callMethod.getMethod() == "newton") {
       this._newton(callMethod);
     }
   };
-  _callBackMethods = (form, equationForm, registry) => {
+  _callBackMethods = (form, resolved) => {
     var method
     if(form.getMethod() ==  "newton"){
-      let newton = Newton.read(form, equationForm, registry)
+      let newton = Newton.read(form, resolved)
       method = newton
     }
     return method;
   }
-  _newton(newton){
-    console.log(newton.newtonMethod());
-    newton.getEP()
-  }
+  // _newton(newton){
+  //   console.log(newton.newtonMethod());
+  //   newton.getEP()
+  // }
 }
 new App();

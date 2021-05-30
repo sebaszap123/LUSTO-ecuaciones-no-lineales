@@ -1,5 +1,5 @@
-export default class ReadForm{
-  constructor(equation, error, method, xi, xf, iterations){
+export default class ReadForm {
+  constructor(equation, error, method, xi, xf) {
     this._equation = equation;
     this._error = error;
     this._method = method;
@@ -7,31 +7,69 @@ export default class ReadForm{
     this._xf = xf;
     this._iterations = iterations;
   }
-  getEquation(){ return this._equation;}
-  getMethod(){ return this._method;}
-  getError(){ return this._error; }
-  getXi(){ return this._xi;}
-  getXf(){ return this._xf;}
-  getIterations(){ return this._iterations}
+  getEquation() {
+    return this._equation;
+  }
+  getMethod() {
+    return this._method;
+  }
+  getError() {
+    return this._error;
+  }
+  getXi() {
+    return this._xi;
+  }
+  getXf() {
+    return this._xf;
+  }
 
-  static read(){
-    let inpEquation = document.querySelector('#equation');
-    let inpError = document.querySelector('#error');
-    let inpMethod = document.querySelector('#method');
-    let inpXi = document.querySelector('#xi');
-    let inpXf = document.querySelector('#xf');
-    let inpIteration = document.querySelector('#iteration');
+  static read() {
+    let inpEquation = document.querySelector("#equation");
+    let inpError = document.querySelector("#error");
+    let inpMethod = document.querySelector("#method");
+    let inpXi = document.querySelector("#xi");
+    // let inpXf = document.querySelector("#xf");
     let equation = inpEquation.value;
     let error = inpError.value;
     let method = inpMethod.value;
     let xi = inpXi.value;
-    let xf = inpXf.value;
-    let iterations = inpIteration.value;
-    if ((equation, error, method, xi, xf, iterations)) {
-      let read = new ReadForm(equation, error, method, xi, xf, iterations);
+    // let xf = inpXf.value;
+    if ((equation, error, method, xi)) {
+      let read = new ReadForm(equation, error, method, xi);
       return read;
     } else {
-      Swal.fire("Error", "Faltan datos por ingresar", "error");
+      return false;
     }
+  }
+  _divide(equation) {
+    let divide = equation.split(" ");
+    return divide;
+  }
+  // Cambia las X de toda la ecuacion y deja solo el resultado final
+  turnInToNormalEq(x, equation) {
+    equation = String(equation);
+    let dividedEq = this._divide(equation);
+    let fullEq = "";
+
+    dividedEq.forEach((pE) => {
+      fullEq = fullEq + this.numberInsteadXV2(pE, x);
+    });
+    let valuate = eval(fullEq);
+    return valuate;
+  }
+
+  // Quita las X y pone en su lugar el valor designado
+  numberInsteadX(equation, newValue) {
+    let change = equation.replace("x", newValue);
+    return change;
+  }
+  numberInsteadXV2(equation, newValue) {
+    var change;
+    if (equation.charAt(0) == "x") {
+      change = equation.replace("x", newValue);
+    } else {
+      change = equation.replace("x", `*${newValue}`);
+    }
+    return change;
   }
 }

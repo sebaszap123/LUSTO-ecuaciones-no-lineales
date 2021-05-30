@@ -1,15 +1,11 @@
 export default class Newton {
-  constructor(readForm, equationForm, registry) {
+  constructor(readForm, resolve) {
     this._classReadForm = readForm;
-    this._classEquationForm = equationForm;
-    this._registry = registry;
+    this._resolve = resolve;
   }
   // obtener el metodo que se esta utilizando
   getMethod() {
     return this._classReadForm.getMethod();
-  }
-  getIterations() {
-    return this._classReadForm.getIterations();
   }
   getError() {
     return this._classReadForm.getError();
@@ -24,7 +20,7 @@ export default class Newton {
     return this._classReadForm.getEquation();
   }
   getFunctionX(value, equation) {
-    let equationForm = this._classEquationForm;
+    let equationForm = this._classReadForm;
     let xn = equationForm.turnInToNormalEq(value, equation);
     return xn;
   }
@@ -36,37 +32,37 @@ export default class Newton {
     let ep = this.getEquationPrime()
     console.log(this.getFunctionX(1, ep))
   }
-  newtonMethod() {
-    var calcular = 0;
-    let iterations = this.getIterations();
+  static newtonMethod() {
+    let iterations = this.getError()
     let i = 0;
-    let xn = this.getXi()
+    let xi = this.getXi()
     let result = 0;
-    result += this.calculate(xn)
-    // do {
-    //   i++
-    // } while (i <= iterations);
+    result += this.calculate(xi)
+    do {
+      i++
+
+    } while (i <= iterations);
     return result
   }
-  calculate(xn){
+  calculate(xi){
     let result = 0;
     let primeEquation = this.getEquationPrime();
-    let fx = this.getFunctionX(xn, this.getEquation())
-    let fxPrime = this.getFunctionX(xn, primeEquation);
-    console.log(fxPrime);
-    console.log(fx)
+    let fx = this.getFunctionX(xi, this.getEquation())
+    let fxPrime = this.getFunctionX(xi, primeEquation);
     if(fxPrime === 0) {
       Swal.fire('Error', 'No se puede resolver por este metodo', 'error')
-    } else {
-      result = xn - fx / fxPrime;
+      return;
     }
+    result = xi - fx / fxPrime;
     return result
   }
   getPorcentualError(){}
   // Obtener la clase form y la clase equationForm
-  static read(readForm, equationForm, registry) {
+  static read(readForm, resolve) {
     if (readForm && equationForm) {
-      return new Newton(readForm, equationForm, registry);
+      return new Newton(readForm, resolve);
     }
   }
 }
+
+// VAS BIEN ;)
