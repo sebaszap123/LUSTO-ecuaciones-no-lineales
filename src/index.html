@@ -23,11 +23,13 @@
               <input id="equation" type="text" value="x**2 - 3x + 1" disabled/>
               <label>% De error:</label>
               <input id="error" type="number" size="35" />
+              <label>Núm de iteracciones:</label>
+              <input id="iteration" type="Number"><br>
               <label>Método a utilizar:</label>
               <select id="method" type="Number">
+                <option value="newton">Método de Newton</option>
                 <option value="bisección">Método de bisección</option>
                 <option value="false">Método de la falsa posición</option>
-                <option value="newton">Método de Newton</option>
                 <option value="secante">Método de la secante</option>
                 <option value="sucesiva">Método de sustitución sucesiva</option>
                 <option value="bairstow">Método de Bairstow</option>
@@ -47,7 +49,7 @@
       <div class="content-info">
         <table id="table" class="table">
           <tr>
-            <th>Xn</th>
+            <th>Xr</th>
             <th>% de errores</th>
           </tr>
         </table>
