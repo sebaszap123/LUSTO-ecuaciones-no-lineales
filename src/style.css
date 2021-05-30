@@ -1,6 +1,6 @@
 * {
   font-family: 'IBM Plex Sans', sans-serif;
-  color: #393e46;
+  color: #073a8d;
   margin: 0;
 }
 
@@ -8,14 +8,14 @@ h1 {
   font-weight: 700;
   font-size: 40px;
   text-align: center;
-  color: #72147e;
+  color: #0f6460;
 }
 
 h2 {
   padding-top: 10px;
   padding-bottom: 20px;
   text-align: center;
-  color: #ff5200;
+  color: #c97201;
 }
 
 p {

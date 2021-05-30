@@ -6,6 +6,11 @@ export default class ReadForm{
     this._xi = xi;
     this._xf = xf;
   }
+  getEquation(){ return this._equation;}
+  getError(){ return this._error; }
+  getMethod(){ return this._method;}
+  getXi(){ return this._xi;}
+  getXf(){ return this._xf;}
   static read(){
     let inpEquation = document.querySelector('#equation');
     let inpError = document.querySelector('#error');

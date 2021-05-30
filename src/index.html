@@ -20,21 +20,17 @@
           <form>
             <div class="field">
               <label>Ecuación:</label>
-              <input class ="left" id="equation" type="text"/>
-              <label class="right">F(x)=</label>
-              <input class="right" id="ecuacionResult" type="text" size="35" disabled>
-              <br><input class="left"type="button" id="add" value="Agregar">
-              <br>
-              <br><label>% De error:</label>
-              <input id="function" type="text" size="35" />
+              <input id="equation" type="text" value="x**2 - 3x + 1" disabled/>
+              <label>% De error:</label>
+              <input id="error" type="number" size="35" />
               <label>Método a utilizar:</label>
               <select id="method" type="Number">
-                <option value="1">Método de bisección</option>
-                <option value="2">Método de la falsa posición</option>
-                <option value="3">Método de Newton</option>
-                <option value="4">Método de la secante</option>
-                <option value="5">Método de sustitución sucesiva</option>
-                <option value="6">Método de Bairstow</option>
+                <option value="bisección">Método de bisección</option>
+                <option value="false">Método de la falsa posición</option>
+                <option value="newton">Método de Newton</option>
+                <option value="secante">Método de la secante</option>
+                <option value="sucesiva">Método de sustitución sucesiva</option>
+                <option value="bairstow">Método de Bairstow</option>
               </select>
               <label>X<sub>i</sub>:</label>
               <input id="xi" type="number" size="35" />
@@ -47,11 +43,11 @@
           </form>
         </div>
             <div>
-      <h2>Ingredientes</h2>
+      <h2>Iteraciones</h2>
       <div class="content-info">
         <table id="table" class="table">
           <tr>
-            <th>Xm</th>
+            <th>Xn</th>
             <th>% de errores</th>
           </tr>
         </table>
