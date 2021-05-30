@@ -20,24 +20,47 @@ export default class Newton {
   getXf() {
     return this._classReadForm.getXf();
   }
-
-  getFunctionXi() {
-    let equationForm = this._classEquationForm;
-    let xi = equationForm.turnInToNormalEq(this.getXi());
-    return xi;
+  getEquation() {
+    return this._classReadForm.getEquation();
   }
-  getFunctionXf() {
+  getFunctionX(value, equation) {
     let equationForm = this._classEquationForm;
-    let xf = equationForm.turnInToNormalEq(this.getXf());
-    return xf;
+    let xn = equationForm.turnInToNormalEq(value, equation);
+    return xn;
+  }
+  getEquationPrime(){
+    let equation = "3x**2 - 1"
+    return equation
+  }
+  getEP(){
+    let ep = this.getEquationPrime()
+    console.log(this.getFunctionX(1, ep))
   }
   newtonMethod() {
     var calcular = 0;
     let iterations = this.getIterations();
     let i = 0;
-    do {
-      
-    } while (i <= iterations);
+    let xn = this.getXi()
+    let result = 0;
+    result += this.calculate(xn)
+    // do {
+    //   i++
+    // } while (i <= iterations);
+    return result
+  }
+  calculate(xn){
+    let result = 0;
+    let primeEquation = this.getEquationPrime();
+    let fx = this.getFunctionX(xn, this.getEquation())
+    let fxPrime = this.getFunctionX(xn, primeEquation);
+    console.log(fxPrime);
+    console.log(fx)
+    if(fxPrime === 0) {
+      Swal.fire('Error', 'No se puede resolver por este metodo', 'error')
+    } else {
+      result = xn - fx / fxPrime;
+    }
+    return result
   }
   getPorcentualError(){}
   // Obtener la clase form y la clase equationForm

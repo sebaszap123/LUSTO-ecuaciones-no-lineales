@@ -1,10 +1,13 @@
 export default class EquationForm {
-  constructor(equation) {
-    this._equation = String(equation);
+  // Separa la ecuacion en partes
+  _divide(equation) {
+    let divide = equation.split(" ");
+    return divide;
   }
   // Cambia las X de toda la ecuacion y deja solo el resultado final
-  turnInToNormalEq(x) {
-    let dividedEq = this._divide(this._equation);
+  turnInToNormalEq(x, equation) {
+    equation = String(equation);
+    let dividedEq = this._divide(equation);
     let fullEq = "";
 
     dividedEq.forEach((pE) => {
@@ -14,11 +17,11 @@ export default class EquationForm {
     return valuate;
   }
 
-  // numberInsteadX(equation, newValue) {
-  //   let change = equation.replace("x", newValue);
-  //   return change;
-  // }
   // Quita las X y pone en su lugar el valor designado
+  numberInsteadX(equation, newValue) {
+    let change = equation.replace("x", newValue);
+    return change;
+  }
   numberInsteadXV2(equation, newValue) {
     var change;
     if (equation.charAt(0) == "x") {

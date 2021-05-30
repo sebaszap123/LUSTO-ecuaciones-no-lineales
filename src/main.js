@@ -32,7 +32,8 @@ class App {
     return method;
   }
   _newton(newton){
-    console.log(newton.getIterations());
+    console.log(newton.newtonMethod());
+    newton.getEP()
   }
 }
 new App();

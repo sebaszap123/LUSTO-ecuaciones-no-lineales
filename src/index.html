@@ -20,7 +20,7 @@
           <form>
             <div class="field">
               <label>Ecuación:</label>
-              <input id="equation" type="text" value="x**2 - 3x + 1" disabled/>
+              <input id="equation" type="text" value="x**3 - x - 1" disabled/> <!--x**2 - 3x + 1-->
               <label>% De error:</label>
               <input id="error" type="number" size="35" />
               <label>Núm de iteracciones:</label>
@@ -34,7 +34,7 @@
                 <option value="sucesiva">Método de sustitución sucesiva</option>
                 <option value="bairstow">Método de Bairstow</option>
               </select>
-              <label>X<sub>i</sub>:</label>
+              <label id="labelXi">X<sub>i</sub>:</label> <!--label.innerHTML = "X<sub>n<sub>"-->
               <input id="xi" type="number" size="35" />
               <label>X<sub>f</sub>:</label>
               <input id="xf" type="number" size="35" />
