@@ -2,10 +2,18 @@ export default class Resolved {
   constructor() {
     this._valuesXr = new Array();
     this._errorPorcentual = new Array();
+    this._didIt = false;
   }
   clean(){
     this._valuesXr = []
     this._errorPorcentual = []
+    this._didIt = false;
+  }
+  getDidIt(){
+    return this._didIt
+  }
+  setDidIt(){
+    this._didIt = true;
   }
   pushXr(value) {
     this._valuesXr.push(value);

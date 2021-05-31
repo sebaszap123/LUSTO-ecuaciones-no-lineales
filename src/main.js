@@ -26,7 +26,6 @@ class App {
       return;
     }
     var callMethod = this._callBackMethods(form);
-    console.log(callMethod.getMethod());
     if (callMethod.getMethod() == "newton") {
       // console.log(callMethod.newtonMethod(callMethod.getXi()))
       let iterationsStop = Number(callMethod.getError());
@@ -46,14 +45,14 @@ class App {
         result = callMethod.newtonMethod(xNew);
         xNew = result;
         let xOld = this._addResolve.getValuesXr(count - 1);
-        console.log(xOld);
         count++;
         porcentualError = callMethod.getPorcentualError(xNew, xOld);
         this._addResolve.pushXr(xNew);
         this._addResolve.pushPorcentual(porcentualError);
       } while (iterationsStop < porcentualError);
-      if (iterationsStop > porcentualError) {
+      if (iterationsStop > porcentualError && !this._addResolve.getDidIt()) {
         this._addResolve.browseData();
+        this._addResolve.setDidIt()
       }
     }
   };
