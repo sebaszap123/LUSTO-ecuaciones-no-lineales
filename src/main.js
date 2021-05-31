@@ -1,4 +1,4 @@
-import ReadForm from "./ReadForm.js";
+import ReadForm from "./readForm.js";
 import Newton from "./newton.js";
 import Resolved from "./resolved.js";
 class App {

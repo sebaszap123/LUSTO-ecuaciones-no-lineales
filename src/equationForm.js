@@ -12,23 +12,18 @@ export default class EquationForm {
   }
   // Cambia las X de toda la ecuacion y deja solo el resultado final
   turnInToNormalEq() {
-    equation = String(equation);
     let dividedEq = this._divide(this._equation);
     let fullEq = "";
 
     dividedEq.forEach((pE) => {
-      fullEq = fullEq + this.numberInsteadXV2(pE, this._value);
+      fullEq = fullEq + this.numberInstead(pE, this._value);
     });
     let valuate = eval(fullEq);
     return valuate;
   }
 
   // Quita las X y pone en su lugar el valor designado
-  numberInsteadX(equation, newValue) {
-    let change = equation.replace("x", newValue);
-    return change;
-  }
-  numberInsteadXV2(equation, newValue) {
+  numberInstead(equation, newValue) {
     var change;
     if (equation.charAt(0) == "x") {
       change = equation.replace("x", newValue);
