@@ -5,7 +5,6 @@ export default class ReadForm {
     this._method = method;
     this._xi = xi;
     this._xf = xf;
-    this._iterations = iterations;
   }
   getEquation() {
     return this._equation;
@@ -52,23 +51,19 @@ export default class ReadForm {
     let fullEq = "";
 
     dividedEq.forEach((pE) => {
-      fullEq = fullEq + this.numberInsteadXV2(pE, x);
+      fullEq = fullEq + this.numberInstead(pE, x);
     });
     let valuate = eval(fullEq);
     return valuate;
   }
 
   // Quita las X y pone en su lugar el valor designado
-  numberInsteadX(equation, newValue) {
-    let change = equation.replace("x", newValue);
-    return change;
-  }
-  numberInsteadXV2(equation, newValue) {
+  numberInstead(equation, newValue) {
     var change;
     if (equation.charAt(0) == "x") {
-      change = equation.replace("x", newValue);
+      change = equation.replace("x", `(${newValue})`);
     } else {
-      change = equation.replace("x", `*${newValue}`);
+      change = equation.replace("x", `*(${newValue})`);
     }
     return change;
   }

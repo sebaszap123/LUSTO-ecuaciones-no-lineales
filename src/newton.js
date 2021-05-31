@@ -1,7 +1,11 @@
 export default class Newton {
-  constructor(readForm, resolve) {
+  constructor(readForm) {
     this._classReadForm = readForm;
-    this._resolve = resolve;
+  }
+  static read(readForm) {
+    if (readForm) {
+      return new Newton(readForm);
+    }
   }
   // obtener el metodo que se esta utilizando
   getMethod() {
@@ -13,9 +17,6 @@ export default class Newton {
   getXi() {
     return this._classReadForm.getXi();
   }
-  getXf() {
-    return this._classReadForm.getXf();
-  }
   getEquation() {
     return this._classReadForm.getEquation();
   }
@@ -24,45 +25,38 @@ export default class Newton {
     let xn = equationForm.turnInToNormalEq(value, equation);
     return xn;
   }
-  getEquationPrime(){
-    let equation = "3x**2 - 1"
-    return equation
+  /*
+  getFXFunction(xnValue) {
+    return this._classReadForm.turnInToNormalEq(this.getXi(),this.getEquation());
   }
-  getEP(){
-    let ep = this.getEquationPrime()
-    console.log(this.getFunctionX(1, ep))
+  getFXPrimeFunction(xnValue) {
+    return this._classReadForm.turnInToNormalEq(this.getXi(),this.FXprime());
   }
-  static newtonMethod() {
-    let iterations = this.getError()
-    let i = 0;
-    let xi = this.getXi()
-    let result = 0;
-    result += this.calculate(xi)
-    do {
-      i++
 
-    } while (i <= iterations);
-    return result
+  */
+  getFXPrime() {
+    let equation = "3x**2 - 1";
+    return equation;
   }
-  calculate(xi){
+
+  newtonMethod(xi) {
     let result = 0;
-    let primeEquation = this.getEquationPrime();
-    let fx = this.getFunctionX(xi, this.getEquation())
-    let fxPrime = this.getFunctionX(xi, primeEquation);
-    if(fxPrime === 0) {
-      Swal.fire('Error', 'No se puede resolver por este metodo', 'error')
+    let primeEquation = this.getFXPrime();
+    let fxResult = this.getFunctionX(xi, this.getEquation());
+    let fxPrimeResult = this.getFunctionX(xi, primeEquation);
+    if (fxPrimeResult === 0) {
+      Swal.fire("Error", "No se puede resolver por este metodo", "error");
       return;
     }
-    result = xi - fx / fxPrime;
-    return result
+    result = xi - fxResult / fxPrimeResult;
+    return result;
   }
-  getPorcentualError(){}
+  getPorcentualError(xNew, xOld) {
+    // ((valor nuevo - valor anterior) / valor nuevo) * 100
+    let result = ((xNew - xOld) / xNew) * 100;
+    return result;
+  }
   // Obtener la clase form y la clase equationForm
-  static read(readForm, resolve) {
-    if (readForm && equationForm) {
-      return new Newton(readForm, resolve);
-    }
-  }
 }
 
 // VAS BIEN ;)
