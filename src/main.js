@@ -47,12 +47,14 @@ class App {
         let xOld = this._addResolve.getValuesXr(count - 1);
         count++;
         porcentualError = callMethod.getPorcentualError(xNew, xOld);
-        this._addResolve.pushXr(xNew);
-        this._addResolve.pushPorcentual(porcentualError);
-      } while (iterationsStop < porcentualError);
-      if (iterationsStop > porcentualError && !this._addResolve.getDidIt()) {
+        if (porcentualError > iterationsStop) {
+          this._addResolve.pushXr(xNew);
+          this._addResolve.pushPorcentual(porcentualError);
+        }
+      } while (iterationsStop <= porcentualError);
+      if (iterationsStop >= porcentualError && !this._addResolve.getDidIt()) {
         this._addResolve.browseData();
-        this._addResolve.setDidIt()
+        this._addResolve.setDidIt();
       }
     }
   };
