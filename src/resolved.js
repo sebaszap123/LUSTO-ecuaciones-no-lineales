@@ -1,7 +1,11 @@
 export default class Resolved {
   constructor() {
-    this._valuesXr = ["20", "21", "22", "23", "24"];
-    this._errorPorcentual = ["%10", "%11", "%12"];
+    this._valuesXr = new Array();
+    this._errorPorcentual = new Array();
+  }
+  clean(){
+    this._valuesXr = []
+    this._errorPorcentual = []
   }
   pushXr(value) {
     this._valuesXr.push(value);
@@ -10,18 +14,31 @@ export default class Resolved {
     this._errorPorcentual.push(value);
   }
   getValuesXr(value) {
-    return this._valuesXr[value]
+    return this._valuesXr[value];
   }
-  addToTable() {
+  getValues(){
+    return this._valuesXr;
+  }
+  getPorcentual(){
+    return this._errorPorcentual
+  }
+  browseData() {
+    var i = this._valuesXr.length;
+    var count = 0;
+    do {
+      let Xr = this._valuesXr[count];
+      let Porcentual = this._errorPorcentual[count];
+      this.addToTable(count, Xr, Porcentual);
+      count++;
+    } while (count < i);
+  }
+  addToTable(value, Xr, Porcentual) {
+    value = value + 1;
     let table = document.querySelector("#table");
-    let row = table.insertRow(1);
+    let row = table.insertRow(value);
     let insertXr = row.insertCell(0);
     let insertErrorPorcentual = row.insertCell(1);
-    this._valuesXr.forEach((xr) => {
-      insertXr.innerHTML = xr;
-    });
-    this._errorPorcentual.forEach((errorPorcentual) => {
-      insertErrorPorcentual.innerHTML = errorPorcentual;
-    });
+    insertXr.innerHTML = Xr;
+    insertErrorPorcentual.innerHTML = Porcentual;
   }
 }

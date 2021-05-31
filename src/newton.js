@@ -53,7 +53,9 @@ export default class Newton {
   }
   getPorcentualError(xNew, xOld) {
     // ((valor nuevo - valor anterior) / valor nuevo) * 100
-    let result = ((xNew - xOld) / xNew) * 100;
+    let result = (xNew - xOld) / xNew;
+    result = Math.abs(result);
+    result = result * 100;
     return result;
   }
   // Obtener la clase form y la clase equationForm
