@@ -21,9 +21,7 @@
             <div class="field">
               <label>Ecuación:</label>
               <input id="equation" type="text" value="x**3 - x - 1" disabled/> <!--x**2 - 3x + 1-->
-              <label>% De error:</label>
-              <input id="error" type="number" size="35" />
-              <label>Método a utilizar:</label>
+              <br>
               <select id="method" type="text">
                 <option value="newton">Método de Newton</option>
                 <option value="bisección">Método de bisección</option>
@@ -32,6 +30,11 @@
                 <option value="sucesiva">Método de sustitución sucesiva</option>
                 <option value="bairstow">Método de Bairstow</option>
               </select>
+              <br><br>
+              <label>% De error:</label>
+              <input id="error" type="number" size="35" />
+              <br>
+              <label>Método a utilizar:</label>
               <label>X<sub>i</sub>:</label> <!--label.innerHTML = "X<sub>n<sub>"-->
               <input id="xi" type="number" size="35" />
               <!-- <label>X<sub>f</sub>:</label> -->      
