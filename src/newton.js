@@ -23,7 +23,7 @@ export default class Newton {
   getFunctionX(value, equation) {
     let equationForm = this._classReadForm;
     let xn = equationForm.turnInToNormalEq(value, equation);
-    return xn;
+    return Number(xn.toFixed(6));
   }
   /*
   getFXFunction(xnValue) {
@@ -49,14 +49,14 @@ export default class Newton {
       return;
     }
     result = xi - fxResult / fxPrimeResult;
-    return result;
+    return Number(result.toFixed(6));
   }
   getPorcentualError(xNew, xOld) {
     // ((valor nuevo - valor anterior) / valor nuevo) * 100
     let result = (xNew - xOld) / xNew;
     result = Math.abs(result);
     result = result * 100;
-    return result;
+    return result.toFixed(6)
   }
   // Obtener la clase form y la clase equationForm
 }
