@@ -17,7 +17,8 @@ class App {
   readForm = () => {
     // de esto puedo usar metodos para obtener los datos
     let form = ReadForm.read();
-    if (!form) { // Si no esta completos los datos del form
+    if (!form) {
+      // Si no esta completos los datos del form
       Swal.fire({
         icon: "error",
         title: "ERROR",
@@ -26,12 +27,13 @@ class App {
       return;
     }
     var callMethod = this._callBackMethods(form); // Llamamos el método correspondiente
-    if (callMethod.getMethod() == "newton") { // evaluamos que método es 
-      this._newton(callMethod) // Llamamos la función del metodo correspondiente
+    if (callMethod.getMethod() == "newton") {
+      // evaluamos que método es
+      this._newton(callMethod); // Llamamos la función del metodo correspondiente
       // Ademas añadimos callMethod para que esta pueda realizar las operaciones
     }
   };
-  _callBackMethods(form){
+  _callBackMethods(form) {
     var method;
     // Escoge el tipo de metodo y crea la clase respectiva con los metodos respectivos
     if (form.getMethod() == "newton") {
@@ -39,7 +41,7 @@ class App {
     }
     // Regresa el valor que es una clase que contiene los valores del form y metodos
     return method;
-  };
+  }
   _newton(callMethod) {
     let iterationsStop = Number(callMethod.getError());
     var porcentualError = 100;
@@ -60,10 +62,8 @@ class App {
       let xOld = this._addResolve.getValuesXr(count - 1);
       count++;
       porcentualError = callMethod.getPorcentualError(xNew, xOld);
-      if (porcentualError > iterationsStop) {
-        this._addResolve.pushXr(xNew);
-        this._addResolve.pushPorcentual(porcentualError);
-      }
+      this._addResolve.pushXr(xNew);
+      this._addResolve.pushPorcentual(porcentualError);
     } while (iterationsStop <= porcentualError);
     if (iterationsStop >= porcentualError && !this._addResolve.getDidIt()) {
       this._addResolve.browseData();
