@@ -7,7 +7,7 @@ export default class Newton {
       return new Newton(readForm);
     }
   }
-  // obtener el metodo que se esta utilizando
+  // llaman a los metodos de la clase readForm
   getMethod() {
     return this._classReadForm.getMethod();
   }
@@ -20,30 +20,24 @@ export default class Newton {
   getEquation() {
     return this._classReadForm.getEquation();
   }
+
+  // Obtiene el resultado de las fx utilizando el metodo de la clase readForm
   getFunctionX(value, equation) {
     let equationForm = this._classReadForm;
     let xn = equationForm.turnInToNormalEq(value, equation);
     return Number(xn.toFixed(6));
   }
-  /*
-  getFXFunction(xnValue) {
-    return this._classReadForm.turnInToNormalEq(this.getXi(),this.getEquation());
-  }
-  getFXPrimeFunction(xnValue) {
-    return this._classReadForm.turnInToNormalEq(this.getXi(),this.FXprime());
-  }
-
-  */
   getFXPrime() {
     let equation = "3x**2 - 1";
     return equation;
   }
 
+  // Obtiene el resultado Xn con el metodo de Newton
   newtonMethod(xi) {
     let result = 0;
-    let primeEquation = this.getFXPrime();
+    let fxPrime = this.getFXPrime();
     let fxResult = this.getFunctionX(xi, this.getEquation());
-    let fxPrimeResult = this.getFunctionX(xi, primeEquation);
+    let fxPrimeResult = this.getFunctionX(xi, fxPrime);
     if (fxPrimeResult === 0) {
       Swal.fire("Error", "No se puede resolver por este metodo", "error");
       return;
@@ -58,7 +52,4 @@ export default class Newton {
     result = result * 100;
     return result.toFixed(6)
   }
-  // Obtener la clase form y la clase equationForm
 }
-
-// VAS BIEN ;)

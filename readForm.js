@@ -1,10 +1,9 @@
 export default class ReadForm {
-  constructor(equation, error, method, xi, xf) {
+  constructor(equation, error, method, xi) {
     this._equation = equation;
     this._error = error;
     this._method = method;
     this._xi = xi;
-    this._xf = xf;
   }
   getEquation() {
     return this._equation;
@@ -18,22 +17,18 @@ export default class ReadForm {
   getXi() {
     return this._xi;
   }
-  getXf() {
-    return this._xf;
-  }
 
+  // Lee los valores de los input del html y los guarda en un objeto de la clase
   static read() {
-    let inpEquation = document.querySelector("#equation");
-    let inpError = document.querySelector("#error");
+    let inpEquation = document.querySelector("#equationNewton");
+    let inpError = document.querySelector("#errorNewton");
     let inpMethod = document.querySelector("#method");
-    let inpXi = document.querySelector("#xi");
-    // let inpXf = document.querySelector("#xf");
+    let inpXi = document.querySelector("#xiNewton");
     let equation = inpEquation.value;
-    let error = inpError.value;
+    let error = Number(inpError.value);
     let method = inpMethod.value;
-    let xi = inpXi.value;
-    // let xf = inpXf.value;
-    if ((equation, error, method, xi)) {
+    let xi = Number(inpXi.value);
+    if (equation && error && method && xi) {
       let read = new ReadForm(equation, error, method, xi);
       return read;
     } else {

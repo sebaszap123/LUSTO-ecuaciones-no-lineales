@@ -9,9 +9,9 @@
 </head>
 <body>
     <body>
-    <div class="header">
+    <div id="header">
       <h1>Metodos Númericos</h1>
-      <p class="azul">Calculadora de ecuaciones no lineales</p>
+      <h2>Calculadora de ecuaciones no lineales</h2>
     </div>
   <div class="content">
       <div>
@@ -19,35 +19,24 @@
         <div class="content-info">
           <form>
             <div class="field">
-              <label>Ecuación:</label>
-              <input id="equation" type="text" value="x**3 - x - 1" disabled/> <!--x**2 - 3x + 1-->
-              <br>
-              <select id="method" type="text">
-                <option value="newton">Método de Newton</option>
-                <option value="bisección">Método de bisección</option>
-                <option value="false">Método de la falsa posición</option>
-                <option value="secante">Método de la secante</option>
-                <option value="sucesiva">Método de sustitución sucesiva</option>
-                <option value="bairstow">Método de Bairstow</option>
+              <select id="method">
+                <option type="text">Selecciona un método</option>
+                <option id="inpNewton" value="Newton" type="text">Newton</option>
+                <option id="inpBisection" value="Bisection" type="text">Bisección</option>
               </select>
-              <br><br>
-              <label>% De error:</label>
-              <input id="error" type="number" size="35" />
-              <br>
-              <label>Método a utilizar:</label>
-              <label>X<sub>i</sub>:</label> <!--label.innerHTML = "X<sub>n<sub>"-->
-              <input id="xi" type="number" size="35" />
-              <!-- <label>X<sub>f</sub>:</label> -->      
-              <!-- <input id="xf" type="number" size="35" /> -->
             </div>
             <div class="field">
-              <input id="calcular" type="button" value="Calcular" />
-              <br>
-              <input id="clean" type="button" value="Limpiar"/>
+              <h3 id="selection">Método: Selecciona un método</h3>
+              <table id="data">
+              </table>
             </div>
+            
           </form>
         </div>
             <div>
+        <div class="btn-calcular" id="addCalculate">
+
+        </div>
       <h2>Iteraciones</h2>
       <div class="content-info">
         <table id="table" class="table">
@@ -58,7 +47,10 @@
         </table>
       </div>
       </div>
+      <div class ="footer">
+        <p>Copyright Miguel Sebastian Frausto Zapata (2G) & Carlos Eduardo Luna Ramírez (2H)</p>
+      </div>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-  <script src="src/main.js" type="module"></script>
+  <script src="main.js" type="module"></script>
 </body>
 </html>

@@ -2,18 +2,18 @@ export default class Resolved {
   constructor() {
     this._valuesXr = new Array();
     this._errorPorcentual = new Array();
-    this._didIt = false;
+    this._done = false;
   }
-  clean(){
-    this._valuesXr = []
-    this._errorPorcentual = []
-    this._didIt = false;
+  static clean() {
+    this._valuesXr = new Array();
+    this._errorPorcentual = new Array();
+    this._done = false;
   }
-  getDidIt(){
-    return this._didIt
+  getDidIt() {
+    return this._done;
   }
-  setDidIt(){
-    this._didIt = true;
+  setDidIt() {
+    this._done = true;
   }
   pushXr(value) {
     this._valuesXr.push(value);
@@ -24,11 +24,11 @@ export default class Resolved {
   getValuesXr(value) {
     return this._valuesXr[value];
   }
-  getValues(){
+  getValues() {
     return this._valuesXr;
   }
-  getPorcentual(){
-    return this._errorPorcentual
+  getPorcentual() {
+    return this._errorPorcentual;
   }
   browseData() {
     var i = this._valuesXr.length;
